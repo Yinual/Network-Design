@@ -1,8 +1,11 @@
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
 #include <numeric>
+
 using namespace std;
+
 struct Edge {
     int src, dest;
     int weight;
@@ -59,6 +62,8 @@ public:
 
     vector<Edge> kruskalMST() {
         vector<Edge> mst_edges;
+        mst_edges.reserve(max(0, V - 1));
+
         long long total_mst_weight = 0;
 
         sort(edges.begin(), edges.end());
@@ -92,7 +97,7 @@ public:
         }
         cout << "-------------------------------------\n";
         
-        if (edges_in_mst < V - 1 && V > 0) {
+        if (V > 0 && edges_in_mst < V - 1) {
             cout << "\nMST could not be formed completely (Graph might be disconnected).\n";
             cout << "Number of edges in MST found: " << edges_in_mst << "\n";
         } else if (V == 0) {
@@ -102,16 +107,20 @@ public:
             cout << "\nMinimum Spanning Tree (MST) for the Network:\n";
             for (const auto& edge : mst_edges) {
                 cout << "Link: Node " << edge.src << " <-> Node " << edge.dest
-                          << " | Cost: " << edge.weight << endl;
+                          << " | Cost: " << edge.weight << '\n';
             }
         }
-        cout << "Total Cost of Minimum Spanning Tree: " << total_mst_weight << endl;
+        cout << "Total Cost of Minimum Spanning Tree: " << total_mst_weight << '\n';
 
         return mst_edges;
     }
 };
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); 
+    cout.tie(NULL);
+
     cout << "===== Network Design using Kruskal's Algorithm for MST =====\n";
 
     int num_nodes = 6;
