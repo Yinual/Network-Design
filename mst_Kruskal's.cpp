@@ -57,8 +57,8 @@ public:
                 cout << "Skipped edge (forms cycle): " << edge.src << " -- " << edge.dest << " (Weight: " << edge.weight << ")\n";
             }
         }
-        std::cout << "-------------------------------------\n";
-        std::cout << "Total Cost of Minimum Spanning Tree: " << total_mst_weight << std::endl;
+        cout << "-------------------------------------\n";
+        cout << "Total Cost of Minimum Spanning Tree: " << total_mst_weight << std::endl;
     }
 };
 
