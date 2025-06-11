@@ -155,3 +155,17 @@ redundant connection (cycle).
 are already connected, thus being unnecessary and adding to the cost.
 The "Minimum Spanning Tree (MST) for the Network:" lists the final set of links forming the most cost-effective backbone connecting all nodes.
 "Total Cost of Minimum Spanning Tree: [Value]" is the minimum possible cost to achieve full connectivity in the example network.
+
+Conclusion
+
+This project successfully demonstrated the application of greedy algorithms, specifically Kruskal's algorithm, for designing efficient 
+communication networks. By representing the network as a graph and finding its Minimum Spanning Tree, we can determine the most cost-effective 
+way to connect all nodes.
+
+The C++ implementation highlighted the crucial role of data structures: the Edge structure for representing links, vector for managing 
+collections of edges, and most importantly, the Disjoint Set Union (DSU) structure with path compression and union by rank optimizations for 
+efficient cycle detection.
+
+Kruskal's algorithm, with a time complexity of O(E log E), provides an efficient and provably optimal solution for the MST problem. This makes 
+it a valuable tool in practical network design scenarios where minimizing infrastructure cost while maintaining full connectivity is paramount. 
+The greedy strategy of always picking the cheapest safe edge proves effective in achieving this global optimum.
