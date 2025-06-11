@@ -110,3 +110,48 @@ struct DSU (Disjoint Set Union / Union-Find):
     Role in Kruskal's: Before adding an edge (u,v) to the MST, the algorithm calls dsu.find(u) and dsu.find(v). If they return the same 
     representative, u and v are already in the same connected component, and adding edge (u,v) would form a cycle. Otherwise, the edge is added, 
     and dsu.unite(u,v) is called to merge their components.
+
+Efficiency of the Algorithms
+
+Let V be the number of vertices (nodes) and E be the number of edges (potential links) in the graph.
+
+Kruskal's Algorithm:
+1.  Sorting Edges: The most time-consuming step is typically sorting all E edges by weight. Using an efficient comparison sort like std::sort 
+(which is often an Introsort, a hybrid of Quicksort, Heapsort, and Insertion Sort) takes O(E log E) time.
+2.  DSU Operations:
+    Initialization of DSU: O(V) to initialize parent and rank arrays.
+    Iterating through E sorted edges: In the worst case, we might iterate through all E edges. For each edge, we perform two find operations 
+    and at most one unite operation.
+    With both Path Compression and Union by Rank (or Union by Size) optimizations, a sequence of m DSU operations (find or unite) on n elements 
+    takes O(m * α(n)) time, where α(n) is the inverse Ackermann function. The inverse Ackermann function grows extremely slowly; for all 
+    practical values of n, α(n) is less than 5. Thus, the DSU operations can be considered nearly constant time on an amortized basis. 
+    So, for E edges, this part takes roughly O(E * α(V)).
+3.  Overall Complexity for Kruskal's: The dominant factor is the edge sorting. Therefore, the total time complexity of Kruskal's algorithm 
+is O(E log E).
+    If E is very large (a dense graph, E ≈ V^2), then log E is log(V^2) = 2 log V, so it becomes O(E log V).
+
+Prim's Algorithm (for comparison):
+Prim's algorithm is another greedy MST algorithm. Its efficiency depends on the data structure used for the priority queue to select the 
+minimum weight edge connecting a vertex in the MST to one outside it.
+Using Adjacency List and Binary Heap (like std::priority_queue): O((V+E) log V) or simply O(E log V) if E >= V-1 (for connected graphs).
+Using Adjacency List and Fibonacci Heap: O(E + V log V). This is asymptotically faster for dense graphs where E is close to V^2.
+Using Adjacency Matrix (naive Prim's): O(V^2).
+
+Comparison for Greedy MST Algorithms:
+Kruskal's (O(E log E)) is generally simpler to implement and often preferred for sparse graphs (where E is much smaller than V^2, e.g., E is O(V)).
+Prim's (e.g., O(E log V) with a binary heap) can be more efficient for dense graphs because log V is typically smaller than log E 
+(since E can be up to O(V^2)).
+
+Program Output and Interpretation (Example based on the provided code)
+
+(The C++ program output, showing edges processed, MST links, and total cost, would be included here in the full project report. 
+Example output was shown previously but is part of the "program execution" rather than static documentation.)
+
+Example interpretation:
+The "Edges sorted..." section (from program output) shows the greedy choices being made.
+"Added edge:" lines indicate links chosen for the efficient network because they are the cheapest available option that doesn't create a 
+redundant connection (cycle).
+"Skipped edge (forms cycle):" lines show links that were considered but rejected because they would connect two parts of the network that 
+are already connected, thus being unnecessary and adding to the cost.
+The "Minimum Spanning Tree (MST) for the Network:" lists the final set of links forming the most cost-effective backbone connecting all nodes.
+"Total Cost of Minimum Spanning Tree: [Value]" is the minimum possible cost to achieve full connectivity in the example network.
