@@ -33,3 +33,26 @@ Greedy algorithms are a paradigm that makes locally optimal choices at each step
 algorithms like Kruskal's and Prim's are well-known greedy approaches that provably find the optimal solution. This project focuses on implementing 
 Kruskal's algorithm in C++ to demonstrate its application in designing communication networks and to analyze the data structures and algorithmic 
 efficiency involved.
+
+Kruskal's Algorithm: A Greedy Approach
+
+Kruskal's algorithm builds a Minimum Spanning Tree by iteratively adding edges to a growing forest. 
+The greedy choice made at each step is to select the edge with the smallest weight from the set of edges not yet considered, 
+provided that adding this edge does not form a cycle with the edges already selected.
+
+The algorithm proceeds as follows:
+1.  Initialization:
+    Create a forest F (a set of trees), where each vertex in the graph is initially a separate tree.
+    Create a set S containing all edges in the graph.
+    The MST will be stored in a list A (initially empty).
+2.  Sort Edges: Sort all edges in S in non-decreasing order of their weights.
+3.  Iterative Selection:
+    For each edge (u, v) in the sorted list S:
+        If vertices u and v are in different trees in the forest F (i.e., adding edge (u, v) does not form a cycle):
+            Add edge (u, v) to the MST list A.
+            Merge the trees containing u and v in the forest F.
+4.  Termination: The algorithm terminates when the MST A contains V-1 edges (where V is the number of vertices) or when 
+all edges in S have been considered. If the graph is connected, V-1 edges will be selected.
+
+The Disjoint Set Union (DSU) data structure is typically used to efficiently manage the forest F and check for cycles 
+(i.e., determine if two vertices belong to the same tree/component).
