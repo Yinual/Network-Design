@@ -36,14 +36,14 @@ public:
 
     void kruskalMST() 
     {
-        std::vector<Edge> mst_edges;
+        vector<Edge> mst_edges;
         long long total_mst_weight = 0;
         
-        std::sort(edges.begin(), edges.end());
+        sort(edges.begin(), edges.end());
         DSU dsu(V);
         
-        std::cout << "\n--- Kruskal's Algorithm Execution ---\n";
-        std::cout << "Processing edges sorted by weight:\n";
+        cout << "\n--- Kruskal's Algorithm Execution ---\n";
+        cout << "Processing edges sorted by weight:\n";
 
         for (const auto& edge : edges) {
             int root_src = dsu.find(edge.src);
@@ -52,9 +52,9 @@ public:
                 mst_edges.push_back(edge);
                 dsu.unite(edge.src, edge.dest);
                 total_mst_weight += edge.weight;
-                std::cout << "Added edge: " << edge.src << " -- " << edge.dest << " (Weight: " << edge.weight << ")\n";
+                cout << "Added edge: " << edge.src << " -- " << edge.dest << " (Weight: " << edge.weight << ")\n";
             } else {
-                std::cout << "Skipped edge (forms cycle): " << edge.src << " -- " << edge.dest << " (Weight: " << edge.weight << ")\n";
+                cout << "Skipped edge (forms cycle): " << edge.src << " -- " << edge.dest << " (Weight: " << edge.weight << ")\n";
             }
         }
         std::cout << "-------------------------------------\n";
