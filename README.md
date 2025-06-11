@@ -2,6 +2,7 @@ Project Title: Network Design Using Greedy Algorithms for Minimum Spanning Trees
 
 Group Name: Group 8.
 Course: Design and Analysis of Algorithm.
+
       Group member            ID.NO
       
       1,Mihret Bezu          NSR/2481/14
@@ -85,7 +86,7 @@ struct Edge:
 
 vector<Edge> edges (within Graph class):
     Purpose: To store all potential edges of the input graph. This list is then sorted.
-    Why vector?: Provides dynamic resizing and efficient storage for a collection of edges. Its iterators are compatible with std::sort.
+    Why vector?: Provides dynamic resizing and efficient storage for a collection of edges. Its iterators are compatible with sort.
 
 vector<Edge> mst_edges (within kruskalMST method):
     Purpose: To store the edges that are selected to be part of the Minimum Spanning Tree.
