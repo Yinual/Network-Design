@@ -63,7 +63,7 @@ public:
 };
 
 int main() {
-    std::cout << "===== Network Design using Kruskal's Algorithm for MST =====\n";
+    cout << "===== Network Design using Kruskal's Algorithm for MST =====\n";
     Graph communication_network(4);
     communication_network.addEdge(0, 1, 10);
     communication_network.addEdge(1, 3, 1);
