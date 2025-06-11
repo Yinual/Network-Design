@@ -11,8 +11,8 @@ Course: Design and Analysis of Algorithm.
       4,Abrham Dile          NSR/465/14
       5,Ashenafi Berihun     NSR/117/15
       6.Mohamed Mohamoud     NSR/1097/15
-      
-Submition Date: Jun 11/ 2025.
+
+Submission Date: Jun 11/ 2025.
 
 Abstract:
 This project investigates the application of greedy algorithms, specifically Kruskal's algorithm, in designing efficient communication networks. 
@@ -61,19 +61,17 @@ The Disjoint Set Union (DSU) data structure is typically used to efficiently man
 
 Application in Communication Network Design
 
-The implemented Kruskal's algorithm directly models the design of an efficient communication network:
-Vertices (Nodes): Represent physical locations such as cities, data centers, routers, or servers that need to be interconnected. 
-In the C++ code, these are integers from 0 to V-1.
-Edges (Links): Represent potential communication links between pairs of nodes, such as fiber optic cables, microwave links, or wireless connections. 
-Each edge has an associated weight.
-Weights (Costs): Represent the cost of establishing a link. This cost can be monetary (e.g., cost of laying cable), physical distance, 
-latency of the connection, or even inverse bandwidth (higher weight for lower bandwidth if minimizing cost implies maximizing throughput).
-Minimum Spanning Tree (MST): The output of Kruskal's algorithm, mst_edges, represents the subset of potential links that should be established 
-to connect all nodes with the minimum possible total cost. This ensures that every node can communicate with every other node 
-(directly or indirectly through the MST paths) while minimizing the infrastructure investment.
+Kruskal's algorithm, as implemented, directly models efficient communication network design. In this context:
 
-For instance, if a telecommunication company wants to connect several towns, the MST would identify the cheapest set of cable routes 
-to ensure all towns are part of the network. 
+Vertices (Nodes) correspond to physical locations like cities, data centers, routers, or servers requiring interconnection. The C++ code represents these as integers from 0 to V-1.
+
+Edges (Links) represent potential communication connections—such as fiber optic cables, microwave links, or wireless connections—between pairs of nodes. Each edge carries an associated weight.
+
+Weights (Costs) signify the expense of establishing a link. This could be a monetary cost (e.g., cable installation), physical distance, connection latency, or an inverse measure of bandwidth (where higher weight implies lower throughput if the goal is to minimize cost while maximizing flow).
+
+The Minimum Spanning Tree (MST), outputted as mst_edges by the algorithm, identifies the subset of potential links required to connect all nodes with the minimum total cost. This guarantees that all nodes can communicate (directly or indirectly via MST paths) while minimizing infrastructure investment.
+
+For example, a telecommunications company seeking to link several towns could use the MST to determine the most cost-effective cable routes, ensuring all towns are networked.
 
 Data Structures Used
 
